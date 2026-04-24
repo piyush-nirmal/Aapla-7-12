@@ -1,80 +1,101 @@
-# 🌾 AAPLA 7/12 - Smart Farming Assistant
-> *Empowering farmers with AI-driven insights, real-time market data, and voice-first accessibility.*
+# 🌾 AAPLA 7/12 - Digital Agriculture Mission 2024
+> *Empowering Indian farmers with real-time market data, AI-driven crop insights, and a supportive community in their native language.*
 
-AAPLA 7/12 is a comprehensive **Progressive Web App (PWA)** designed to revolutionize how farmers interact with agricultural data. It combines traditional records (7/12) with modern AI technology to provide actionable advice in local languages.
+[![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue.svg)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-purple.svg)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.0-cyan.svg)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-![App Screenshot](https://raw.githubusercontent.com/placeholder-image.png)
+AAPLA 7/12 is a comprehensive **Progressive Web App (PWA)** designed to revolutionize how farmers interact with agricultural data. It combines traditional farming practices with modern technology, providing actionable advice, live market rates, and community support in multiple regional languages.
 
 ## ✨ Key Features
 
-### 🤖 Kisan AI Voice Assistant
-- **Voice-First Interface**: Speak in your native language (Hindi, Marathi, English, Tamil + 8 others).
-- **Smart Switch**: Automatically switches between **Online AI** (GPT-3.5) and **Offline Knowledge Base** based on internet connectivity.
-- **Offline Capable**: Get answers about major crops (Wheat, Rice, Cotton, etc.) even without internet.
+### 🌍 100% Multilingual Interface
+- Fully translated UI supporting **English, Hindi (हिंदी), and Marathi (मराठी)**.
+- Language switcher instantly localizes the entire application (navigation, content, alerts, and placeholders) via `i18next`.
 
-### 📱 Modern Dashboard
-- **Feature Grid**: Quick access to Crop Advisory, Soil Reports, Disease Detection, and Market Prices.
-- **Multilingual UI**: Fully localized interface for broader accessibility.
-- **PWA Support**: Installable on mobile devices (Android/iOS) for a native app-like experience.
+### 📈 Live Mandi Prices (Govt. API Integration)
+- Integrated directly with the official **data.gov.in (Agmarknet)** API.
+- Real-time commodity prices from APMCs across India (Maharashtra, Gujarat, MP, etc.).
+- Filterable by state and categorized dynamically (Cereals, Pulses, Vegetables, Fruits, Oilseeds, Spices).
+- Auto-calculates "Top Gainers" and "Top Losers" based on market trends.
 
-### 🔐 Secure Authentication
-- **Powered by Firebase Auth**: Secure Login & Registration.
-- **Social Login**: One-click **Google Login** integration.
-- **Protected Routes**: Ensures sensitive data is accessible only to authenticated farmers.
+### 👥 Interactive Farmer Community
+- Social feed for farmers to share success stories, ask for advice, and connect.
+- Post creation, dynamic "Likes", local state management, and localized verified badges (e.g., KVK Officials).
 
-### 🌍 Real-time Insights
-- **Live Weather**: Location-based weather updates.
-- **Market Trends**: Latest Mandi prices and graphical trends.
-- **News**: Agricultural news ticker and updates.
+### 🩺 AI Disease Detection & Soil Health
+- **Disease Scanner:** Upload leaf photos to get instant AI-simulated disease diagnostics (Early Blight, Leaf Rust, etc.) with confidence scores and treatment plans.
+- **Soil Health Card:** Track Nitrogen, Phosphorus, Potassium, and pH levels to generate personalized crop advisories.
+
+### 💧 Smart Irrigation Advisory
+- Real-time, time-of-day based water management advice.
+- Farm size water calculator based on specific crop needs (Wheat, Rice, Sugarcane).
+
+### 📱 Progressive Web App (PWA)
+- Installable on Android/iOS devices for a native app-like experience.
+- Service workers enable faster load times and offline fallback capabilities.
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: React, TypeScript, Vite
-- **UI Framework**: Tailwind CSS, Shadcn UI, Lucid React Icons
-- **PWA**: `vite-plugin-pwa` for service workers and manifest.
-- **Backend/Auth**: Firebase (Authentication, Firestore, Analytics)
-- **AI Integration**: OpenAI/AIML API + Web Speech API (Browser native)
+- **Frontend Framework**: React 18, TypeScript, Vite
+- **Styling**: Tailwind CSS, Shadcn UI (Radix Primitives)
+- **Icons**: Lucide React
+- **State & Routing**: React Router DOM, React Context API
+- **Internationalization**: `i18next`, `react-i18next`
+- **Authentication**: Firebase Auth (Google OAuth & Email/Password)
+- **Data Integration**: Official `data.gov.in` REST API
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+)
+- Node.js (v18 or higher)
 - Firebase Project Credentials
+- data.gov.in API Key (for live Mandi prices)
 
 ### Installation
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/your-username/aapla-712-farm-insights.git
-    cd aapla-712-farm-insights
-    ```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/piyush-nirmal/Aapla-7-12.git
+   cd Aapla-7-12
+   ```
 
-2.  **Install Dependencies**
-    ```bash
-    npm install
-    ```
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-3.  **Environment Setup**
-    Create a `.env` file in the root directory and add your keys:
-    ```env
-    VITE_FIREBASE_API_KEY=your_firebase_api_key
-    VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
-    VITE_FIREBASE_PROJECT_ID=your_project_id
-    VITE_AIML_API_KEY=your_ai_api_key
-    ```
+3. **Environment Setup**
+   Create a `.env` file in the root directory and add your keys:
+   ```env
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+   VITE_FIREBASE_PROJECT_ID=your_project_id
+   ```
+   *(Note: The `data.gov.in` API key is currently managed in `src/services/mandiService.ts` for simplicity, but should be moved to `.env` for production).*
 
-4.  **Run Development Server**
-    ```bash
-    npm run dev
-    ```
+4. **Run Development Server**
+   ```bash
+   npm run dev
+   ```
 
-## 📱 PWA Features
-This app is fully PWA compliant. Use the "Add to Home Screen" option in your browser to install it as a standalone app. 
-- **Offline Caching**: Core assets and offline data chunks are cached.
-- **Manifest**: Custom icons and splash screens.
+## 📂 Project Structure Highlights
+- `/src/i18n/locales` - Contains comprehensive language dictionaries (`en.ts`, `hi.ts`, `mr.ts`).
+- `/src/services` - Contains API integration logic (e.g., `mandiService.ts`).
+- `/src/pages` - Standalone page components (Dashboard, Market, Soil, Disease, Community).
+- `/src/components/ui` - Reusable Shadcn UI components.
 
 ## 🤝 Contributing
-Contributions are welcome! Please open an issue or submit a pull request.
+Contributions are always welcome! 
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ---
-*Built with ❤️ for Indian Farmers.*
+<div align="center">
+  <b>Built with ❤️ for Indian Farmers.</b>
+</div>
